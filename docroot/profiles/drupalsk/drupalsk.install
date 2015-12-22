@@ -47,10 +47,9 @@ function drupalsk_install() {
     ->set('use_admin_theme', TRUE)
     ->save(TRUE);
 
-  // Set the uuid - this needs to be the last step.
+  // Set the uuid, so we can import exported configuration.
   drupalsk_set_uuid('dece0293-a931-4e51-ba04-4ddb9dea877d');
 
-  /** Import configuration **/
-
+  // Import configuration.
   drupalsk_import_config();
 }
