@@ -20,12 +20,8 @@
   * edit this config: `docroot/settings/settings.local.php`
   * you need set `$settings['hash_salt']` to some random string value. This value is used for hashing passwords on your site.
   * (optional) set DB connection string. Some stacks might generate this for you. Look for `$databases` non-empty array. 
-* Install the site using minimal profile.
-  * `drush si minimal -y`
-* Replace site uuid
-  * `drush cedit system.site` + replace `uuid` value with `dece0293-a931-4e51-ba04-4ddb9dea877d`
-* Import configuration
-  * `drush cim sync -y`
+* Install the site using Drupal.sk profile (distribution).
+  * `drush si -y`
 * After you finish working, export configuration
   * `drush cex sync -y`
   
