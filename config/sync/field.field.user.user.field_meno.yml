@@ -1,0 +1,20 @@
+uuid: 2e145c3e-0c2d-4fe0-9100-c1b3eccb2ada
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_meno
+  module:
+    - user
+id: user.user.field_meno
+field_name: field_meno
+entity_type: user
+bundle: user
+label: Meno
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

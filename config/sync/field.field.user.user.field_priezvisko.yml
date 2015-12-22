@@ -1,0 +1,20 @@
+uuid: 1d807a20-4275-4893-9c03-3ffa8f3994a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_priezvisko
+  module:
+    - user
+id: user.user.field_priezvisko
+field_name: field_priezvisko
+entity_type: user
+bundle: user
+label: Priezvisko
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

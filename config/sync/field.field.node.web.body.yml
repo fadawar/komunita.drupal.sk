@@ -1,0 +1,22 @@
+uuid: 75fe7d93-e9d9-443c-9804-4b5071239f8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.web
+  module:
+    - text
+id: node.web.body
+field_name: body
+entity_type: node
+bundle: web
+label: 'O projekte'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

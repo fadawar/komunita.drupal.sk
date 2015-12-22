@@ -1,0 +1,19 @@
+uuid: 8c45fa1c-5af3-438e-b262-983c620b047e
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_odkaz_na_projekt
+field_name: field_odkaz_na_projekt
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

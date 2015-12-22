@@ -1,0 +1,43 @@
+uuid: caa4b13c-3637-4c44-8307-07793a84a2c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_meno
+    - field.field.user.user.field_priezvisko
+    - field.field.user.user.field_spolocnost
+  module:
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: -10
+  field_meno:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_priezvisko:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_spolocnost:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  language:
+    weight: 0
+  timezone:
+    weight: 6
+hidden: {  }

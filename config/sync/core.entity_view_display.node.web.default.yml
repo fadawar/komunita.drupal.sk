@@ -1,0 +1,49 @@
+uuid: 9db2a3dc-ec3f-4c63-a512-18b5c6ea2ed9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.web.body
+    - field.field.node.web.field_obrazok
+    - field.field.node.web.field_odkaz_na_projekt
+    - node.type.web
+  module:
+    - image
+    - link
+    - text
+    - user
+id: node.web.default
+targetEntityType: node
+bundle: web
+mode: default
+content:
+  body:
+    label: visually_hidden
+    type: text_default
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  field_obrazok:
+    weight: 1
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+  field_odkaz_na_projekt:
+    weight: 3
+    label: visually_hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

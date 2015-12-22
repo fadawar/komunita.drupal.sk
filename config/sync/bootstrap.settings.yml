@@ -1,0 +1,14 @@
+features:
+  favicon: false
+  logo: true
+  name: true
+  node_user_picture: true
+  slogan: true
+  comment_user_picture: true
+  comment_user_verification: true
+schema: '8000'
+cdn_provider_import_data: ''
+cdn_provider: jsdelivr
+favicon:
+  use_default: true
+  path: ''

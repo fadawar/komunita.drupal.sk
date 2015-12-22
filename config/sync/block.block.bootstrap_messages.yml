@@ -1,0 +1,20 @@
+uuid: f656b0d9-9afe-4722-9700-cb2127b4c15d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bootstrap
+id: bootstrap_messages
+theme: bootstrap
+region: header
+weight: -6
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

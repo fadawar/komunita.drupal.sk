@@ -1,0 +1,23 @@
+uuid: d18dd381-8a89-4a70-ae00-d332496906ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_odkaz_na_projekt
+    - node.type.web
+  module:
+    - link
+id: node.web.field_odkaz_na_projekt
+field_name: field_odkaz_na_projekt
+entity_type: node
+bundle: web
+label: 'Odkaz na projekt'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

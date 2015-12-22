@@ -1,0 +1,20 @@
+uuid: 0de45acb-d9df-41b4-8a04-4b42ac3f38f8
+langcode: en
+status: true
+dependencies:
+  theme:
+    - stark
+id: stark_local_tasks
+theme: stark
+region: content
+weight: -20
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

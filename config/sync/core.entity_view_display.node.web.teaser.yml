@@ -1,0 +1,30 @@
+uuid: 5c6305bf-def2-447d-af00-fc527fe74cfb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.web.body
+    - field.field.node.web.field_obrazok
+    - field.field.node.web.field_odkaz_na_projekt
+    - node.type.web
+  module:
+    - text
+    - user
+id: node.web.teaser
+targetEntityType: node
+bundle: web
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  field_obrazok: true
+  field_odkaz_na_projekt: true
