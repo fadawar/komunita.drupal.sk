@@ -6,7 +6,6 @@
 
 namespace Drupal\bootstrap\Plugin\Provider;
 
-use Drupal\bootstrap\Annotation\BootstrapProvider;
 use Drupal\bootstrap\Plugin\PluginBase;
 use Drupal\bootstrap\Plugin\ProviderManager;
 use Drupal\Component\Serialization\Json;
@@ -16,10 +15,6 @@ use GuzzleHttp\Psr7\Response;
 
 /**
  * CDN provider base class.
- *
- * @BootstrapProvider(
- *   id = "none",
- * )
  */
 class ProviderBase extends PluginBase implements ProviderInterface {
 
@@ -48,6 +43,11 @@ class ProviderBase extends PluginBase implements ProviderInterface {
    * {@inheritdoc}
    */
   public function getAssets($types = NULL) {
+    // Immediately return if there are no assets.
+    if (!$this->assets) {
+      return $this->assets;
+    }
+
     $assets = [];
 
     // If no type is set, return all CSS and JS.
@@ -61,9 +61,13 @@ class ProviderBase extends PluginBase implements ProviderInterface {
       $assets[$type] = [];
     }
 
+    // Retrieve the system performance config.
+    $config = \Drupal::config('system.performance');
+
     // Iterate over each type.
     foreach ($types as $type) {
-      $files = \Drupal::config("preprocess_$type") && isset($this->assets['min'][$type]) ? $this->assets['min'][$type] : (isset($this->assets[$type]) ? $this->assets[$type] : []);
+      $min = $config->get("$type.preprocess");
+      $files = $min && isset($this->assets['min'][$type]) ? $this->assets['min'][$type] : (isset($this->assets[$type]) ? $this->assets[$type] : []);
       foreach ($files as $asset) {
         $data = [
           'data' => $asset,

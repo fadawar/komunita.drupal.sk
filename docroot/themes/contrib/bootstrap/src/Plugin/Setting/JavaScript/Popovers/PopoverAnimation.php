@@ -17,7 +17,7 @@ use Drupal\Core\Form\FormStateInterface;
  * @BootstrapSetting(
  *   id = "popover_animation",
  *   type = "checkbox",
- *   title = @Translation("animate"),
+ *   title = @Translation("animation"),
  *   description = @Translation("Apply a CSS fade transition to the popover."),
  *   defaultValue = 1,
  *   groups = {

@@ -11,6 +11,7 @@ use Drupal\bootstrap\Plugin\FormManager;
 use Drupal\bootstrap\Plugin\PreprocessManager;
 use Drupal\bootstrap\Utility\Unicode;
 use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Extension\ThemeHandlerInterface;
 
 /**
@@ -28,34 +29,125 @@ class Bootstrap {
   const CACHE_TAG = 'theme_registry';
 
   /**
+   * Append a callback.
+   *
+   * @var int
+   */
+  const CALLBACK_APPEND = 1;
+
+  /**
+   * Prepend a callback.
+   *
+   * @var int
+   */
+  const CALLBACK_PREPEND = 2;
+
+  /**
+   * Replace a callback or append it if not found.
+   *
+   * @var int
+   */
+  const CALLBACK_REPLACE_APPEND = 3;
+
+  /**
+   * Replace a callback or prepend it if not found.
+   *
+   * @var int
+   */
+  const CALLBACK_REPLACE_PREPEND = 4;
+
+  /**
    * The current supported Bootstrap Framework version.
+   *
+   * @var string
    */
   const FRAMEWORK_VERSION = '3.3.5';
 
   /**
    * The Bootstrap Framework documentation site.
+   *
+   * @var string
    */
   const FRAMEWORK_HOMEPAGE = 'http://getbootstrap.com';
 
   /**
    * The Bootstrap Framework repository.
+   *
+   * @var string
    */
   const FRAMEWORK_REPOSITORY = 'https://github.com/twbs/bootstrap';
 
   /**
    * The project branch.
+   *
+   * @var string
    */
   const PROJECT_BRANCH = '8.x-3.x';
 
   /**
    * The Drupal Bootstrap documentation site.
+   *
+   * @var string
    */
   const PROJECT_DOCUMENTATION = 'http://drupal-bootstrap.org';
 
   /**
    * The Drupal Bootstrap project page.
+   *
+   * @var string
    */
   const PROJECT_PAGE = 'https://www.drupal.org/project/bootstrap';
+
+  /**
+   * Adds a callback to an array.
+   *
+   * @param array $callbacks
+   *   An array of callbacks to add the callback to, passed by reference.
+   * @param array|string $callback
+   *   The callback to add.
+   * @param array|string $replace
+   *   If specified, the callback will instead replace the specified value
+   *   instead of being appended to the $callbacks array.
+   * @param int $action
+   *   Flag that determines how to add the callback to the array.
+   *
+   * @return bool
+   *   TRUE if the callback was added, FALSE if $replace was specified but its
+   *   callback could be found in the list of callbacks.
+   */
+  public static function addCallback(array &$callbacks, $callback, $replace = NULL, $action = Bootstrap::CALLBACK_APPEND) {
+    // Replace a callback.
+    if ($replace) {
+      // Iterate through the callbacks.
+      foreach ($callbacks as $key => $value) {
+        // Convert each callback and match the string values.
+        if (Unicode::convertCallback($value) === Unicode::convertCallback($replace)) {
+          $callbacks[$key] = $callback;
+          return TRUE;
+        }
+      }
+      // No match found and action shouldn't append or prepend.
+      if ($action !== self::CALLBACK_REPLACE_APPEND || $action !== self::CALLBACK_REPLACE_PREPEND) {
+        return FALSE;
+      }
+    }
+
+    // Append or prepend the callback.
+    switch ($action) {
+      case self::CALLBACK_APPEND:
+      case self::CALLBACK_REPLACE_APPEND:
+        $callbacks[] = $callback;
+        return TRUE;
+
+      case self::CALLBACK_PREPEND:
+      case self::CALLBACK_REPLACE_PREPEND:
+        array_unshift($callbacks, $callback);
+        return TRUE;
+
+      default:
+        return FALSE;
+    }
+  }
 
   /**
    * Manages theme alter hooks as classes and allows sub-themes to sub-class.
@@ -138,7 +230,6 @@ class Bootstrap {
     return self::PROJECT_DOCUMENTATION . '/api/bootstrap/' . self::PROJECT_BRANCH . '/search/' . Html::escape($query);
   }
 
-
   /**
    * Matches a Bootstrap class based on a string value.
    *
@@ -167,6 +258,8 @@ class Bootstrap {
           // Success class.
           t('Add effect')->render()         => 'success',
           t('Add and configure')->render()  => 'success',
+          t('Save configuration')->render() => 'success',
+          t('Install and set as default')->render() => 'success',
 
           // Info class.
           t('Save and add')->render()       => 'info',
@@ -181,10 +274,17 @@ class Bootstrap {
           t('Filter')->render()             => 'primary',
           t('Submit')->render()             => 'primary',
           t('Search')->render()             => 'primary',
+          t('Settings')->render()           => 'primary',
+
+          // Danger class.
+          t('Delete')->render()             => 'danger',
+          t('Remove')->render()             => 'danger',
+          t('Uninstall')->render()          => 'danger',
 
           // Success class.
           t('Add')->render()                => 'success',
           t('Create')->render()             => 'success',
+          t('Install')->render()            => 'success',
           t('Save')->render()               => 'success',
           t('Write')->render()              => 'success',
 
@@ -197,10 +297,6 @@ class Bootstrap {
           // Info class.
           t('Apply')->render()              => 'info',
           t('Update')->render()             => 'info',
-
-          // Danger class.
-          t('Delete')->render()             => 'danger',
-          t('Remove')->render()             => 'danger',
         ],
       ];
 
@@ -280,65 +376,6 @@ class Bootstrap {
   }
 
   /**
-   * Returns the theme hook definition information.
-   *
-   * This base-theme's custom theme hook implementations. Never define "path"
-   * or "template" as these are detected and automatically added.
-   *
-   * @see bootstrap_theme_registry_alter()
-   * @see \Drupal\bootstrap\Registry
-   * @see hook_theme()
-   */
-  public static function getInfo() {
-    $hooks['bootstrap_carousel'] = [
-      'variables' => [
-        'attributes' => [],
-        'items' => [],
-        'start_index' => 0,
-        'controls' => TRUE,
-        'indicators' => TRUE,
-        'interval' => 5000,
-        'pause' => 'hover',
-        'wrap' => TRUE,
-      ],
-    ];
-
-    $hooks['bootstrap_dropdown'] = [
-      'render element' => 'element',
-    ];
-
-    $hooks['bootstrap_modal'] = [
-      'variables' => [
-        'heading' => '',
-        'body' => '',
-        'footer' => '',
-        'dialog_attributes' => [],
-        'attributes' => [],
-        'size' => '',
-        'html_heading' => FALSE,
-      ],
-    ];
-
-    $hooks['bootstrap_panel'] = [
-      'variables' => [
-        'attributes' => [],
-        'body' => [],
-        'body_attributes' => [],
-        'collapsible' => FALSE,
-        'collapsed' => FALSE,
-        'description' => NULL,
-        'description_display' => 'before',
-        'footer' => NULL,
-        'footer_attributes' => [],
-        'heading' => NULL,
-        'heading_attributes' => [],
-        'panel_type' => 'default',
-      ],
-    ];
-    return $hooks;
-  }
-
-  /**
    * Retrieves a theme instance of \Drupal\bootstrap.
    *
    * @param string $name
@@ -390,6 +427,83 @@ class Bootstrap {
   }
 
   /**
+   * Returns the theme hook definition information.
+   *
+   * This base-theme's custom theme hook implementations. Never define "path"
+   * as this is automatically detected and added.
+   *
+   * @see \Drupal\bootstrap\Plugin\Alter\ThemeRegistry::alter()
+   * @see bootstrap_theme_registry_alter()
+   * @see bootstrap_theme()
+   * @see hook_theme()
+   */
+  public static function getThemeHooks() {
+    $hooks['bootstrap_carousel'] = [
+      'variables' => [
+        'attributes' => [],
+        'controls' => TRUE,
+        'id' => NULL,
+        'indicators' => TRUE,
+        'interval' => 5000,
+        'pause' => 'hover',
+        'slides' => [],
+        'start_index' => 0,
+        'wrap' => TRUE,
+      ],
+    ];
+
+    $hooks['bootstrap_dropdown'] = [
+      'variables' => [
+        'alignment' => NULL,
+        'attributes' => [],
+        'items' => [],
+        'split' => FALSE,
+        'toggle' => NULL,
+      ],
+    ];
+
+    $hooks['bootstrap_modal'] = [
+      'variables' => [
+        'attributes' => [],
+        'body' => '',
+        'body_attributes' => [],
+        'close_button' => TRUE,
+        'content_attributes' => [],
+        'description' => NULL,
+        'description_display' => 'before',
+        'dialog_attributes' => [],
+        'footer' => '',
+        'footer_attributes' => [],
+        'header_attributes' => [],
+        'id' => NULL,
+        'size' => NULL,
+        'title' => '',
+        'title_attributes' => [],
+      ],
+    ];
+
+    $hooks['bootstrap_panel'] = [
+      'variables' => [
+        'attributes' => [],
+        'body' => [],
+        'body_attributes' => [],
+        'collapsible' => FALSE,
+        'collapsed' => FALSE,
+        'description' => NULL,
+        'description_display' => 'before',
+        'footer' => NULL,
+        'footer_attributes' => [],
+        'heading' => NULL,
+        'heading_attributes' => [],
+        'id' => NULL,
+        'panel_type' => 'default',
+      ],
+    ];
+
+    return $hooks;
+  }
+
+  /**
    * Returns a specific Bootstrap Glyphicon.
    *
    * @param string $name
@@ -402,29 +516,34 @@ class Bootstrap {
    *   icon does not exist or returns NULL if no icon could be rendered.
    */
   public static function glyphicon($name, $default = []) {
+    $icon = [];
+
     // Ensure the icon specified is a valid Bootstrap Glyphicon.
     // @todo Supply a specific version to _bootstrap_glyphicons() when Icon API
     // supports versioning.
     if (self::getTheme()->hasGlyphicons() && in_array($name, self::glyphicons())) {
       // Attempt to use the Icon API module, if enabled and it generates output.
       if (\Drupal::moduleHandler()->moduleExists('icon')) {
-        return [
+        $icon = [
           '#type' => 'icon',
           '#bundle' => 'bootstrap',
           '#icon' => 'glyphicon-' . $name,
         ];
       }
-      return [
-        '#type' => 'html_tag',
-        '#tag' => 'span',
-        '#value' => '',
-        '#attributes' => [
-          'class' => ['icon', 'glyphicon', 'glyphicon-' . $name],
-          'aria-hidden' => 'true',
-        ],
-      ];
+      else {
+        $icon = [
+          '#type' => 'html_tag',
+          '#tag' => 'span',
+          '#value' => '',
+          '#attributes' => [
+            'class' => ['icon', 'glyphicon', 'glyphicon-' . $name],
+            'aria-hidden' => 'true',
+          ],
+        ];
+      }
     }
-    return $default;
+
+    return $icon ?: $default;
   }
 
   /**
@@ -454,6 +573,7 @@ class Bootstrap {
         'contains' => [
           t('Manage')->render()     => 'cog',
           t('Configure')->render()  => 'cog',
+          t('Settings')->render()   => 'cog',
           t('Download')->render()   => 'download',
           t('Export')->render()     => 'export',
           t('Filter')->render()     => 'filter',
@@ -461,7 +581,8 @@ class Bootstrap {
           t('Save')->render()       => 'ok',
           t('Update')->render()     => 'ok',
           t('Edit')->render()       => 'pencil',
-          t('Add')->render()        => 'plus',
+          t('Uninstall')->render()  => 'trash',
+          t('Install')->render()    => 'plus',
           t('Write')->render()      => 'plus',
           t('Cancel')->render()     => 'remove',
           t('Delete')->render()     => 'trash',
@@ -854,7 +975,7 @@ class Bootstrap {
     // hook suggestion alters work, the variables provided are from the
     // original theme hook, not the suggestion.
     if (isset($info['variables'])) {
-      $variables += $info['variables'];
+      $variables = NestedArray::mergeDeepArray([$info['variables'], $variables], TRUE);
     }
 
     // Add extra variables to all theme hooks.
@@ -872,6 +993,7 @@ class Bootstrap {
       $variables['theme']['path'] = $theme->getPath();
       $variables['theme']['title'] = $theme->getTitle();
       $variables['theme']['settings'] = $theme->settings()->get();
+      $variables['theme']['has_glyphicons'] = $theme->hasGlyphicons();
     }
 
     // Invoke necessary preprocess plugin.

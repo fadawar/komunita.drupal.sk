@@ -61,6 +61,9 @@
       // Javascript.
       $context.find('#edit-javascript').drupalSetSummary(function () {
         var summary = [];
+        if ($context.find('input[name="modal_enabled"]').is(':checked')) {
+          summary.push(Drupal.t('Modals'));
+        }
         if ($context.find('input[name="popover_enabled"]').is(':checked')) {
           summary.push(Drupal.t('Popovers'));
         }
@@ -111,8 +114,9 @@
         $preview.append('<a id="bootstrap-theme-preview-bootstrap_theme" class="bootswatch-preview element-invisible" href="http://getbootstrap.com/examples/theme/" target="_blank"><img class="img-responsive" src="http://getbootstrap.com/examples/screenshots/theme.jpg" alt="' + Drupal.t('Preview of the Bootstrap theme') + '" /></a>');
 
         // Retrieve the Bootswatch theme preview images.
+        // @todo This should be moved into PHP.
         $.ajax({
-          url: '//api.bootswatch.com/3/',
+          url: 'https://bootswatch.com/api/3.json',
           dataType: 'json',
           success: function (json) {
             var themes = json.themes;
@@ -132,6 +136,27 @@
       });
     }
   };
+
+  /**
+   * Provide Bootstrap navbar preview.
+   */
+  Drupal.behaviors.bootstrapContainerPreview = {
+    attach: function (context) {
+      var $context = $(context);
+      var $container = $context.find('#edit-container');
+      $container.once('container-preview').each(function () {
+        $container.find('[name="fluid_container"]').on('change.bootstrap', function () {
+          if ($(this).is(':checked')) {
+            $context.find('.container').removeClass('container').addClass('container-fluid');
+          }
+          else {
+            $context.find('.container-fluid').removeClass('container-fluid').addClass('container');
+          }
+        });
+      });
+    }
+  };
+
   /**
    * Provide Bootstrap navbar preview.
    */

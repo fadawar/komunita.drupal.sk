@@ -46,15 +46,12 @@ class Element extends DrupalAttributes {
    * @param \Drupal\Core\Form\FormStateInterface $form_state
    *   The current state of the form.
    */
-  public function __construct(&$element, FormStateInterface $form_state = NULL) {
+  public function __construct(&$element = [], FormStateInterface $form_state = NULL) {
     if (!is_array($element)) {
       $element = ['#markup' => $element instanceof MarkupInterface ? $element : new FormattableMarkup($element, [])];
     }
     $this->array = &$element;
     $this->formState = $form_state;
-    if (isset($element['#type'])) {
-      $this->type = &$element['#type'];
-    }
   }
 
   /**
@@ -139,6 +136,36 @@ class Element extends DrupalAttributes {
   }
 
   /**
+   * Appends a property with a value.
+   *
+   * @param string $name
+   *   The name of the property to set.
+   * @param mixed $value
+   *   The value of the property to set.
+   *
+   * @return $this
+   */
+  public function appendProperty($name, $value) {
+    $property = &$this->getProperty($name);
+    $value = $value instanceof Element ? $value->getArray() : $value;
+
+    // If property isn't set, just set it.
+    if (!isset($property)) {
+      $property = $value;
+      return $this;
+    }
+
+    if (is_array($property)) {
+      $property[] = Element::create($value)->getArray();
+    }
+    else {
+      $property .= (string) $value;
+    }
+
+    return $this;
+  }
+
+  /**
    * Identifies the children of an element array, optionally sorted by weight.
    *
    * The children of a element array are those key/value pairs whose key does
@@ -182,27 +209,37 @@ class Element extends DrupalAttributes {
   public function colorize() {
     $button = $this->isButton();
 
-    // Do nothing if setting is disabled.
-    if (!$button || !Bootstrap::getTheme()->getSetting('button_colorize')) {
-      return $this;
-    }
-
     // @todo refactor this more so it's not just "button" specific.
     $prefix = $button ? 'btn' : 'has';
 
     // Don't add a class if one is already present in the array.
-    $button_classes = [
+    $classes = [
       "$prefix-default", "$prefix-primary", "$prefix-success", "$prefix-info",
       "$prefix-warning", "$prefix-danger", "$prefix-link",
     ];
 
-    foreach ($button_classes as $class) {
+    foreach ($classes as $class) {
       if ($this->hasClass($class)) {
+        if ($button && $this->getProperty('split')) {
+          $this->addClass($class, $this::SPLIT_BUTTON);
+        }
         return $this;
       }
     }
 
-    $this->addClass("$prefix-" . Bootstrap::cssClassFromString($this->array['#value'], 'default'));
+    // Do nothing if setting is disabled.
+    if ($button && !Bootstrap::getTheme()->getSetting('button_colorize')) {
+      $this->addClass('btn-default');
+      return $this;
+    }
+
+    if ($value = $this->getProperty('value', $this->getProperty('title'))) {
+      $class = "$prefix-" . Bootstrap::cssClassFromString($value, $this->getProperty('button_type', 'default'));
+      $this->addClass($class);
+      if ($button && $this->getProperty('split')) {
+        $this->addClass($class, $this::SPLIT_BUTTON);
+      }
+    }
 
     return $this;
   }
@@ -218,8 +255,16 @@ class Element extends DrupalAttributes {
    * @return \Drupal\bootstrap\Utility\Element
    *   The newly created element instance.
    */
-  public static function create(&$element, FormStateInterface $form_state = NULL) {
+  public static function create(&$element = [], FormStateInterface $form_state = NULL) {
     return new self($element, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function exchangeArray($data) {
+    $old = parent::exchangeArray($data);
+    return $old;
   }
 
   /**
@@ -306,7 +351,7 @@ class Element extends DrupalAttributes {
    *   TRUE or FALSE.
    */
   public function isButton() {
-    return !empty($this->array['#is_button']) || $this->isType(['button', 'submit', 'reset', 'image_button']);
+    return !empty($this->array['#is_button']) || $this->isType(['button', 'submit', 'reset', 'image_button']) || $this->hasClass('btn');
   }
 
   /**
@@ -345,8 +390,8 @@ class Element extends DrupalAttributes {
    *   TRUE if element is or one of $type.
    */
   public function isType($type) {
-    $types = is_array($type) ? $type : [$type];
-    return $this->type && in_array($this->type, $types);
+    $property = $this->getProperty('type');
+    return $property && in_array($property, (is_array($type) ? $type : [$type]));
   }
 
   /**
@@ -377,6 +422,36 @@ class Element extends DrupalAttributes {
   }
 
   /**
+   * Prepends a property with a value.
+   *
+   * @param string $name
+   *   The name of the property to set.
+   * @param mixed $value
+   *   The value of the property to set.
+   *
+   * @return $this
+   */
+  public function prependProperty($name, $value) {
+    $property = &$this->getProperty($name);
+    $value = $value instanceof Element ? $value->getArray() : $value;
+
+    // If property isn't set, just set it.
+    if (!isset($property)) {
+      $property = $value;
+      return $this;
+    }
+
+    if (is_array($property)) {
+      array_unshift($property, Element::create($value)->getArray());
+    }
+    else {
+      $property = (string) $value . (string) $property;
+    }
+
+    return $this;
+  }
+
+  /**
    * Gets properties of a structured array element (keys beginning with '#').
    *
    * @return array
@@ -399,6 +474,43 @@ class Element extends DrupalAttributes {
       $renderer = \Drupal::service('renderer');
     }
     return $renderer->render($this->array);
+  }
+
+  /**
+   * Adds Bootstrap button size class to the element.
+   *
+   * @param string $size
+   *   The full button size class to add. If none is provided, it will default
+   *   to any set theme setting.
+   *
+   * @return $this
+   */
+  public function setButtonSize($size = NULL) {
+    // Immediately return if element is not a button.
+    if (!$this->isButton()) {
+      return $this;
+    }
+
+    // Don't add a class if one is already present in the array.
+    foreach (['btn-xs', 'btn-sm', 'btn-lg', 'btn-block'] as $class) {
+      if ($this->hasClass($class)) {
+        // Add the found class to any split buttons.
+        if ($this->getProperty('split')) {
+          $this->addClass($class, $this::SPLIT_BUTTON);
+        }
+        return $this;
+      }
+    }
+
+    // Add any a button size.
+    if ($size = $size ?: Bootstrap::getTheme()->getSetting('button_size')) {
+      $this->addClass($size);
+      if ($this->getProperty('split')) {
+        $this->addClass($size, $this::SPLIT_BUTTON);
+      }
+    }
+
+    return $this;
   }
 
   /**
@@ -435,8 +547,10 @@ class Element extends DrupalAttributes {
     if ($this->isButton() && !Bootstrap::getTheme()->getSetting('button_iconize')) {
       return $this;
     }
-    $icon = isset($icon) ? $icon : Bootstrap::glyphiconFromString($this->getProperty('value'));
-    $this->setProperty('icon', $icon);
+    if ($value = $this->getProperty('value', $this->getProperty('title'))) {
+      $icon = isset($icon) ? $icon : Bootstrap::glyphiconFromString($value);
+      $this->setProperty('icon', $icon);
+    }
     return $this;
   }
 
