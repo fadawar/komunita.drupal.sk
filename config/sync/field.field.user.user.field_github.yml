@@ -1,0 +1,20 @@
+uuid: 6a29e24f-ee75-4898-b204-4a6e60f79af9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_github
+  module:
+    - user
+id: user.user.field_github
+field_name: field_github
+entity_type: user
+bundle: user
+label: Github
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

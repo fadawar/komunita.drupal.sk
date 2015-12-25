@@ -1,11 +1,11 @@
-uuid: 0a0f4875-1729-446f-b000-fdbd01ec5d64
+uuid: 2c0d668a-69a1-4bd8-9700-cbb5457292ae
 langcode: en
 status: true
 dependencies:
   module:
     - user
-id: user.field_priezvisko
-field_name: field_priezvisko
+id: user.field_twitter
+field_name: field_twitter
 entity_type: user
 type: string
 settings:

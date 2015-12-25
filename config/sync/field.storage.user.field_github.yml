@@ -1,11 +1,11 @@
-uuid: 20df89e3-c4d2-46aa-bc00-a33481acf3ee
+uuid: 203047c7-c35c-445e-8129-4154e09cca46
 langcode: en
 status: true
 dependencies:
   module:
     - user
-id: user.field_meno
-field_name: field_meno
+id: user.field_github
+field_name: field_github
 entity_type: user
 type: string
 settings:

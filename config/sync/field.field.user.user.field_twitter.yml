@@ -1,18 +1,18 @@
-uuid: 1d807a20-4275-4893-9c03-3ffa8f3994a8
+uuid: 26383b8c-6067-494c-9300-b06a53b397d6
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_priezvisko
+    - field.storage.user.field_twitter
   module:
     - user
-id: user.user.field_priezvisko
-field_name: field_priezvisko
+id: user.user.field_twitter
+field_name: field_twitter
 entity_type: user
 bundle: user
-label: Priezvisko
+label: Twitter
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

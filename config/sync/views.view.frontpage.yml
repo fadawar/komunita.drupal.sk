@@ -3,11 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.rss
     - field.storage.node.field_obrazok
-    - field.storage.user.field_meno
-    - field.storage.user.field_priezvisko
-    - field.storage.user.field_spolocnost
+    - field.storage.user.field_name
+    - field.storage.user.field_surname
   module:
     - image
     - node
@@ -270,15 +268,15 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-        field_meno:
-          id: field_meno
-          table: user__field_meno
-          field: field_meno
+        field_name:
+          id: field_name
+          table: user__field_name
+          field: field_name
           relationship: uid
           group_type: group
           admin_label: ''
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -333,81 +331,18 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_priezvisko:
-          id: field_priezvisko
-          table: user__field_priezvisko
-          field: field_priezvisko
-          relationship: uid
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: '{{ field_meno }} {{ field_priezvisko }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_spolocnost:
-          id: field_spolocnost
-          table: user__field_spolocnost
-          field: field_spolocnost
+        field_surname:
+          id: field_surname
+          table: user__field_surname
+          field: field_surname
           relationship: uid
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: '{{ field_priezvisko }}, {{ field_spolocnost }}'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -475,9 +410,8 @@ display:
       max-age: -1
       tags:
         - 'config:field.storage.node.field_obrazok'
-        - 'config:field.storage.user.field_meno'
-        - 'config:field.storage.user.field_priezvisko'
-        - 'config:field.storage.user.field_spolocnost'
+        - 'config:field.storage.user.field_name'
+        - 'config:field.storage.user.field_surname'
   page_1:
     display_options:
       path: node
@@ -496,6 +430,5 @@ display:
       max-age: -1
       tags:
         - 'config:field.storage.node.field_obrazok'
-        - 'config:field.storage.user.field_meno'
-        - 'config:field.storage.user.field_priezvisko'
-        - 'config:field.storage.user.field_spolocnost'
+        - 'config:field.storage.user.field_name'
+        - 'config:field.storage.user.field_surname'

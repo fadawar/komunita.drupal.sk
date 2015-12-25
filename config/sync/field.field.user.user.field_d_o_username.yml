@@ -1,18 +1,18 @@
-uuid: 15ac0959-d42e-40d1-b100-002be658acc2
+uuid: 22d69a26-c039-44f5-bc05-5c997a43ba99
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_spolocnost
+    - field.storage.user.field_d_o_username
   module:
     - user
-id: user.user.field_spolocnost
-field_name: field_spolocnost
+id: user.user.field_d_o_username
+field_name: field_d_o_username
 entity_type: user
 bundle: user
-label: Spoločnosť
+label: 'Drupal.org používateľské meno'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
