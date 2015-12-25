@@ -30,41 +30,7 @@ display:
       cache:
         type: tag
         options: {  }
-      empty:
-        area_text_custom:
-          admin_label: ''
-          content: 'No front page content has been created yet.'
-          empty: true
-          field: area_text_custom
-          group_type: group
-          id: area_text_custom
-          label: ''
-          relationship: none
-          table: views
-          tokenize: false
-          plugin_id: text_custom
-        node_listing_empty:
-          admin_label: ''
-          empty: true
-          field: node_listing_empty
-          group_type: group
-          id: node_listing_empty
-          label: ''
-          relationship: none
-          table: node
-          plugin_id: node_listing_empty
-          entity_type: node
-        title:
-          id: title
-          table: views
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          empty: true
-          title: 'Welcome to [site:name]'
-          plugin_id: title
+      empty: {  }
       exposed_form:
         type: basic
         options:
@@ -504,47 +470,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
-      max-age: -1
-      tags:
-        - 'config:field.storage.node.field_obrazok'
-        - 'config:field.storage.user.field_meno'
-        - 'config:field.storage.user.field_priezvisko'
-        - 'config:field.storage.user.field_spolocnost'
-  feed_1:
-    display_plugin: feed
-    id: feed_1
-    display_title: Feed
-    position: 2
-    display_options:
-      sitename_title: true
-      path: rss.xml
-      displays:
-        page_1: page_1
-        default: ''
-      pager:
-        type: some
-        options:
-          items_per_page: 10
-          offset: 0
-      style:
-        type: rss
-        options:
-          description: ''
-          grouping: {  }
-          uses_fields: false
-      row:
-        type: node_rss
-        options:
-          relationship: none
-          view_mode: rss
-      display_extenders: {  }
-      enabled: false
-    cache_metadata:
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
