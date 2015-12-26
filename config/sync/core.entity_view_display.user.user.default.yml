@@ -23,20 +23,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     type: string
-  field_priezvisko:
-    weight: 7
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
-  field_spolocnost:
-    weight: 8
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
   field_surname:
     type: string
     weight: 1

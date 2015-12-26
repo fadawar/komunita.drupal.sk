@@ -27,20 +27,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_priezvisko:
-    weight: 8
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
-  field_spolocnost:
-    weight: 9
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
   field_surname:
     type: string_textfield
     weight: 4
