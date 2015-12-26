@@ -28,3 +28,4 @@ content:
 hidden:
   field_obrazok: true
   field_odkaz_na_projekt: true
+  langcode: true

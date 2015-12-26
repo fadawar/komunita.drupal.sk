@@ -93,3 +93,54 @@ function drupalsk_import_config() {
   // Import configuration.
   $configImporter->import();
 }
+
+/**
+ * Imports languages via a batch process during installation.
+ *
+ * @param $install_state
+ *   An array of information about the current installation state.
+ *
+ * @return array
+ *   The batch definition, if there are language files to import.
+ */
+function drupalsk_import_translations(&$install_state) {
+  \Drupal::moduleHandler()->loadInclude('locale', 'translation.inc');
+  \Drupal::moduleHandler()->loadInclude('install', 'core.inc');
+
+  // If there is more than one language or the single one is not English, we
+  // should import translations.
+  $operations = install_download_additional_translations_operations($install_state);
+  $operations[] = array(
+    '_install_prepare_import',
+    array(array('sk'), $install_state['server_pattern'])
+  );
+
+  $projects = array_keys(locale_translation_get_projects());
+
+  // Set up a batch to import translations for drupal core. Translation import
+  // for contrib modules happens in install_import_translations_remaining.
+  foreach ($projects as $project) {
+    if (locale_translation_use_remote_source()) {
+      $operations[] = array(
+        'locale_translation_batch_fetch_download',
+        array($project, 'sk')
+      );
+    }
+    $operations[] = array(
+      'locale_translation_batch_fetch_import',
+      array($project, 'sk', array())
+    );
+  }
+
+  module_load_include('fetch.inc', 'locale');
+  $batch = array(
+    'operations' => $operations,
+    'title' => t('Updating translations.'),
+    'progress_message' => '',
+    'error_message' => t('Error importing translation files'),
+    'finished' => 'locale_translation_batch_fetch_finished',
+    'file' => drupal_get_path('module', 'locale') . '/locale.batch.inc',
+  );
+  return $batch;
+}
+

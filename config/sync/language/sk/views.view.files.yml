@@ -1,0 +1,69 @@
+label: Súbory
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+      fields:
+        filename:
+          label: Názov
+        filemime:
+          label: 'MIME typ'
+        filesize:
+          label: Veľkosť
+        status:
+          label: Status
+        created:
+          label: 'Dátum nahrania'
+        changed:
+          label: 'Dátum zmeny'
+        count:
+          label: 'Použité v'
+      filters:
+        filename:
+          expose:
+            label: 'Názov súboru'
+        filemime:
+          expose:
+            label: 'MIME typ'
+        status:
+          expose:
+            label: Status
+      title: Súbory
+  page_1:
+    display_title: 'Prehľad súborov'
+    display_options:
+      menu:
+        title: Súbory
+  page_2:
+    display_options:
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
+      fields:
+        entity_label:
+          label: Entity
+        type:
+          label: 'Entity type'
+      arguments:
+        fid:
+          exception:
+            title: Všetko

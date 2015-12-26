@@ -1,0 +1,9 @@
+session:
+  parameter: language
+url:
+  source: path_prefix
+  prefixes:
+    sk: sk
+  domains:
+    sk: ''
+selected_langcode: site_default

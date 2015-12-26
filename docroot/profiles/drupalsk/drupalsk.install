@@ -53,3 +53,24 @@ function drupalsk_install() {
   // Import configuration.
   drupalsk_import_config();
 }
+
+/**
+ * Implements hook_install_tasks_alter().
+ *
+ * @inheritdoc
+ */
+function drupalsk_install_tasks_alter(&$tasks, $install_state) {
+  $tasks += array(
+    'drupalsk_import_translations' => array(
+      'display_name' => t('Finish translations'),
+      'display' => TRUE,
+      'type' => 'batch',
+    ),
+    'drupalsk_import_config' => array(
+      'display_name' => t('Import configuration'),
+      'display' => TRUE,
+      'type' => 'normal',
+    ),
+  );
+}
+

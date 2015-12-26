@@ -43,6 +43,11 @@ content:
       placeholder_title: 'Odkaz na projekt'
     third_party_settings: {  }
     type: link_default
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
