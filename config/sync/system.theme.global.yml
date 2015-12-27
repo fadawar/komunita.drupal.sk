@@ -8,7 +8,9 @@ features:
   comment_user_verification: true
   favicon: true
   node_user_picture: true
+  logo: true
 logo:
-  path: ''
+  path: 'public://drupal-slovensko-profile.jpg'
   url: ''
-  use_default: true
+  use_default: false
+langcode: sk

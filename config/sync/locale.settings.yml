@@ -11,3 +11,4 @@ translation:
   update_interval_days: 0
   path: sites/komunita.dd/files/translations
   import_enabled: true
+langcode: sk
