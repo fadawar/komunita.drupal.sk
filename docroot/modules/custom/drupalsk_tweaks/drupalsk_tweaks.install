@@ -11,7 +11,7 @@ use Drupal\menu_link_content\Entity\MenuLinkContent;
  *
  * @inheritdoc
  */
-function drupal_sk_tweaks_install() {
+function drupalsk_tweaks_install() {
   // Create menu link.
   MenuLinkContent::create([
     'title' => 'Pridaj showcase',
