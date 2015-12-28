@@ -1,0 +1,104 @@
+<?php
+
+use Drupal\block\Entity\Block;
+use Drupal\block_content\Entity\BlockContent;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
+/**
+ * Implements hook_install().
+ *
+ * Create blocks and menu link during block installation.
+ *
+ * @inheritdoc
+ */
+function drupal_sk_tweaks_install() {
+  // Create menu link.
+  MenuLinkContent::create([
+    'title' => 'Pridaj showcase',
+    'link' => ['uri' => 'internal:/node/add'],
+    'menu_name' => 'account',
+    'bundle' => 'menu_link_content',
+    'weight' => -100,
+  ])->save();
+
+  // Create block for authenticated user.
+  $block_content = BlockContent::create([
+    'type' => 'basic',
+    'info' => 'Pridaj showcase',
+  ]);
+  $block_content->set('body', [
+    'value' => '<div class="well well-lg">
+<h2 class="text-center">Vytvoril si niečo úžasné? Pochváľ sa s tým!</h2>
+<p class="text-center"><a class="btn btn-primary btn-lg" href="/node/add">Pridaj showcase</a></p>
+</div>',
+    'format' => 'basic_html'
+  ]);
+  $block_content->save();
+
+  Block::create([
+    'id' => 'add_showcase',
+    'plugin' => 'block_content:' . $block_content->uuid(),
+    'region' => 'header',
+    'provider' => 'block_content',
+    'weight' => -100,
+    'theme' => \Drupal::config('system.theme')->get('default'),
+    'visibility' => [
+      'user_role' => [
+        'id' => 'user_role',
+        'roles' => [
+          'authenticated' => 'authenticated',
+        ],
+        'negate' => FALSE,
+        'context_mapping' => [
+          'user' => '@user.current_user_context:current_user',
+        ],
+      ],
+    ],
+    'settings' => [
+      'label' => 'Pridaj showcase',
+      'label_display' => FALSE,
+    ],
+  ])->save();
+
+  // Create block for anonymous user.
+  $block_content = BlockContent::create([
+    'type' => 'basic',
+    'info' => 'Pridaj showcase - anonymous',
+  ]);
+  $block_content->set('body', [
+    'value' => '<div class="well well-lg">
+<h2 class="text-center">Vytvoril si niečo úžasné? Pochváľ sa s tým!</h2>
+<p class="text-center">
+<a class="btn btn-primary btn-lg" href="/user/login?destination=/node/add">
+Prihlás sa a pridaj showcase
+</a></p>
+</div>',
+    'format' => 'basic_html'
+  ]);
+  $block_content->save();
+
+  Block::create([
+    'id' => 'add_showcase_anon',
+    'plugin' => 'block_content:' . $block_content->uuid(),
+    'region' => 'header',
+    'provider' => 'block_content',
+    'weight' => -100,
+    'theme' => \Drupal::config('system.theme')->get('default'),
+    'visibility' => [
+      'user_role' => [
+        'id' => 'user_role',
+        'roles' => [
+          'anonymous' => 'anonymous',
+        ],
+        'negate' => FALSE,
+        'context_mapping' => [
+          'user' => '@user.current_user_context:current_user',
+        ],
+      ],
+    ],
+    'settings' => [
+      'label' => 'Pridaj showcase - anonymous',
+      'label_display' => FALSE,
+    ],
+  ])->save();
+}

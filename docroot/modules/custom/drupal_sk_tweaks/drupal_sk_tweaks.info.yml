@@ -1,0 +1,7 @@
+name: Drupal.sk Tweaks
+type: module
+description: Drupal.sk general tweaks
+core: 8.x
+package: Other
+dependencies:
+  - block_content
