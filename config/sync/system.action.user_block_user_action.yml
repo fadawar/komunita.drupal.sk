@@ -5,7 +5,7 @@ dependencies:
   module:
     - user
 id: user_block_user_action
-label: 'Block the selected user(s)'
+label: 'Zablokovať vybraných používateľov'
 type: user
 plugin: user_block_user_action
 configuration: {  }

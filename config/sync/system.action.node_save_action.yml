@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: node_save_action
-label: 'Save content'
+label: 'Uložiť obsah'
 type: node
 plugin: node_save_action
 configuration: {  }

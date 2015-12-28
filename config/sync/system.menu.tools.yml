@@ -3,6 +3,6 @@ langcode: sk
 status: true
 dependencies: {  }
 id: tools
-label: Tools
+label: Nástroje
 description: 'User tool links, often added by modules'
 locked: true

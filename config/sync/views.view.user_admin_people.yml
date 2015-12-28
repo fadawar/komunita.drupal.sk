@@ -5,9 +5,9 @@ dependencies:
   module:
     - user
 id: user_admin_people
-label: People
+label: Používatelia
 module: user
-description: 'Find and manage people interacting with your site.'
+description: 'Nájsť a spravovať ľudí, ktorí sú aktívni na vašich stránkach.'
 tag: default
 base_table: users_field_data
 base_field: uid
@@ -60,9 +60,9 @@ display:
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Všetko -'
             offset: false
-            offset_label: Offset
+            offset_label: 'Zobraziť od'
           quantity: 9
       style:
         type: table
@@ -147,7 +147,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Bulk update'
+          label: 'Hromadná aktualizácia'
           exclude: false
           alter:
             alter_text: false
@@ -197,7 +197,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Username
+          label: 'Používateľské meno'
           exclude: false
           alter:
             alter_text: false
@@ -305,7 +305,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Roles
+          label: 'Kategórie používateľov'
           exclude: false
           alter:
             alter_text: false
@@ -468,7 +468,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Operations
+          label: Akcie
           exclude: false
           alter:
             alter_text: false
@@ -590,7 +590,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Name or email contains'
+            label: 'Meno alebo email obsahuje'
             description: ''
             use_operator: false
             operator: combine_op
@@ -671,7 +671,7 @@ display:
           exposed: true
           expose:
             operator_id: permission_op
-            label: Permission
+            label: Oprávnenie
             description: ''
             use_operator: false
             operator: permission_op
@@ -740,7 +740,7 @@ display:
                 operator: '='
                 value: '1'
               2:
-                title: Blocked
+                title: Zablokovaný
                 operator: '='
                 value: '0'
           plugin_id: boolean
@@ -840,7 +840,7 @@ display:
           plugin_id: date
           entity_type: user
           entity_field: created
-      title: People
+      title: Používatelia
       empty:
         area_text_custom:
           id: area_text_custom
@@ -888,14 +888,14 @@ display:
       show_admin_links: false
       menu:
         type: 'default tab'
-        title: List
-        description: 'Find and manage people interacting with your site.'
+        title: Zoznam
+        description: 'Nájsť a spravovať ľudí, ktorí sú aktívni na vašich stránkach.'
         menu_name: admin
         weight: -10
         context: ''
       tab_options:
         type: normal
-        title: People
+        title: Používatelia
         description: 'Manage user accounts, roles, and permissions.'
         menu_name: admin
         weight: 0

@@ -30,7 +30,7 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      title: 'Monthly archive'
+      title: 'Mesačný archív'
       access:
         type: perm
         options:
@@ -41,7 +41,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Použiť
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -60,9 +60,9 @@ display:
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Všetko -'
             offset: false
-            offset_label: Offset
+            offset_label: 'Zobraziť od'
           tags:
             previous: ‹‹
             next: ››
@@ -182,7 +182,7 @@ display:
       tags: {  }
   block_1:
     id: block_1
-    display_title: Block
+    display_title: Blok
     display_plugin: block
     position: 1
     display_options:

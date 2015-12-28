@@ -7,12 +7,12 @@ dependencies:
 id: bootstrap_page_title
 theme: bootstrap
 region: header
-weight: 0
+weight: -1
 provider: null
 plugin: page_title_block
 settings:
   id: page_title_block
-  label: 'Page title'
+  label: 'Názov stránky'
   provider: core
   label_display: '0'
 visibility: {  }

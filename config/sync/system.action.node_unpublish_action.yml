@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: node_unpublish_action
-label: 'Unpublish content'
+label: 'Zrušiť zverejnenie obsahu'
 type: node
 plugin: node_unpublish_action
 configuration: {  }

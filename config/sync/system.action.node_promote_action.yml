@@ -5,7 +5,7 @@ dependencies:
   module:
     - node
 id: node_promote_action
-label: 'Promote content to front page'
+label: 'Propagovať obsah na hlavnej stránke'
 type: node
 plugin: node_promote_action
 configuration: {  }

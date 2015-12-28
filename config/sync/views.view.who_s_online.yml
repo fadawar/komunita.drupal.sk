@@ -37,7 +37,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Použiť
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -125,7 +125,7 @@ display:
           expose:
             operator_id: access_op
             label: 'Last access'
-            description: 'A user is considered online for this long after they have last viewed a page.'
+            description: 'Používateľ sa považuje za online v tomto čase od posledného zobrazenia stránky.'
             use_operator: false
             operator: access_op
             identifier: access
@@ -167,7 +167,7 @@ display:
           plugin_id: date
           entity_type: user
           entity_field: access
-      title: 'Who''s online'
+      title: 'Kto je online'
       header:
         result:
           id: result
@@ -205,10 +205,10 @@ display:
   who_s_online_block:
     display_plugin: block
     id: who_s_online_block
-    display_title: 'Who''s online'
+    display_title: 'Kto je online'
     position: 1
     display_options:
-      block_description: 'Who''s online'
+      block_description: 'Kto je online'
       display_description: 'A list of users that are currently logged in.'
       display_extenders: {  }
     cache_metadata:

@@ -6,8 +6,8 @@ dependencies:
     - seven
 id: seven_local_tasks
 theme: seven
-region: header
-weight: -4
+region: pre_content
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:

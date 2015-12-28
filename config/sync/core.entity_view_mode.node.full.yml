@@ -5,6 +5,6 @@ dependencies:
   module:
     - node
 id: node.full
-label: 'Full content'
+label: 'Celý obsah'
 targetEntityType: node
 cache: true

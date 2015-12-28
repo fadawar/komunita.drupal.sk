@@ -2,7 +2,7 @@ uuid: 90abdd2b-bda4-4171-9203-3ebcf490b8ed
 langcode: sk
 status: true
 dependencies: {  }
-name: 'Plain text'
+name: 'Obyčajný text'
 format: plain_text
 weight: 10
 filters:

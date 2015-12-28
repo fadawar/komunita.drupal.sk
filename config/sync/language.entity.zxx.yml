@@ -3,7 +3,7 @@ langcode: sk
 status: true
 dependencies: {  }
 id: zxx
-label: 'Not applicable'
+label: Neurčené
 direction: ltr
 weight: 3
 locked: true

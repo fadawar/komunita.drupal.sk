@@ -3,6 +3,6 @@ langcode: sk
 status: true
 dependencies: {  }
 id: admin
-label: Administration
+label: Administrácia
 description: 'Administrative task links'
 locked: true

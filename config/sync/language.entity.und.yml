@@ -3,7 +3,7 @@ langcode: sk
 status: true
 dependencies: {  }
 id: und
-label: 'Not specified'
+label: Neurčené
 direction: ltr
 weight: 2
 locked: true

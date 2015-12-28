@@ -6,7 +6,7 @@ dependencies:
     - file
     - user
 id: files
-label: Files
+label: Súbory
 module: file
 description: 'Find and manage files.'
 tag: default
@@ -60,9 +60,9 @@ display:
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Všetko -'
             offset: false
-            offset_label: Offset
+            offset_label: 'Zobraziť od'
       style:
         type: table
         options:
@@ -185,7 +185,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Name
+          label: Názov
           exclude: false
           alter:
             alter_text: false
@@ -248,7 +248,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Mime type'
+          label: 'MIME typ'
           exclude: false
           alter:
             alter_text: false
@@ -300,7 +300,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Size
+          label: Veľkosť
           exclude: false
           alter:
             alter_text: false
@@ -408,7 +408,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Upload date'
+          label: 'Dátum nahrania'
           exclude: false
           alter:
             alter_text: false
@@ -464,7 +464,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Changed date'
+          label: 'Dátum zmeny'
           exclude: false
           alter:
             alter_text: false
@@ -520,7 +520,7 @@ display:
           relationship: fid
           group_type: sum
           admin_label: ''
-          label: 'Used in'
+          label: 'Použité v'
           exclude: false
           alter:
             alter_text: false
@@ -584,7 +584,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: Filename
+            label: 'Názov súboru'
             description: ''
             use_operator: false
             operator: filename_op
@@ -624,7 +624,7 @@ display:
           exposed: true
           expose:
             operator_id: filemime_op
-            label: 'Mime type'
+            label: 'MIME typ'
             description: ''
             use_operator: false
             operator: filemime_op
@@ -693,7 +693,7 @@ display:
           entity_type: file
           entity_field: status
       sorts: {  }
-      title: Files
+      title: Súbory
       header: {  }
       footer: {  }
       empty:
@@ -729,13 +729,13 @@ display:
   page_1:
     display_plugin: page
     id: page_1
-    display_title: 'Files overview'
+    display_title: 'Prehľad súborov'
     position: 1
     display_options:
       path: admin/content/files
       menu:
         type: tab
-        title: Files
+        title: Súbory
         description: ''
         menu_name: admin
         weight: 0
@@ -799,9 +799,9 @@ display:
             items_per_page_label: 'Items per page'
             items_per_page_options: '5, 10, 25, 50'
             items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
+            items_per_page_options_all_label: '- Všetko -'
             offset: false
-            offset_label: Offset
+            offset_label: 'Zobraziť od'
       filters: {  }
       filter_groups:
         operator: AND
@@ -1026,7 +1026,7 @@ display:
           exception:
             value: all
             title_enable: false
-            title: All
+            title: Všetko
           title_enable: true
           title: 'File usage information for {{ arguments.fid }}'
           default_argument_type: fixed

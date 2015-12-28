@@ -3,7 +3,7 @@ langcode: sk
 status: true
 dependencies: {  }
 id: anonymous
-label: 'Anonymous user'
+label: 'Anonymný používateľ'
 weight: 0
 is_admin: false
 permissions:
