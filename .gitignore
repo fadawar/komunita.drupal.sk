@@ -5,3 +5,5 @@ docroot/sites/*/services*.yml
 # Ignore paths that contain user-generated content.
 docroot/sites/*/files
 docroot/sites/*/private
+config/sync/block.block.add_showcase.yml
+config/sync/block.block.add_showcase_anon.yml

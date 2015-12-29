@@ -5,9 +5,12 @@ dependencies:
   config:
     - field.field.user.user.field_d_o_username
     - field.field.user.user.field_github
+    - field.field.user.user.field_latitude
+    - field.field.user.user.field_longitude
     - field.field.user.user.field_name
     - field.field.user.user.field_surname
     - field.field.user.user.field_twitter
+    - field.field.user.user.field_web
     - field.field.user.user.field_work
   module:
     - user
@@ -34,6 +37,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_web:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_work:
     type: string_textfield
     weight: 3
@@ -48,5 +58,7 @@ content:
 hidden:
   field_d_o_username: true
   field_github: true
+  field_latitude: true
+  field_longitude: true
   field_twitter: true
   language: true

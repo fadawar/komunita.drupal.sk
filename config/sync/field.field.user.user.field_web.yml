@@ -1,0 +1,20 @@
+uuid: d69bf15c-fa9e-49a3-a726-383684bc327e
+langcode: sk
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_web
+  module:
+    - user
+id: user.user.field_web
+field_name: field_web
+entity_type: user
+bundle: user
+label: Web
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

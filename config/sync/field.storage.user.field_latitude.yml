@@ -1,0 +1,21 @@
+uuid: 6dfdd024-a729-49c1-9b00-b96580169f60
+langcode: sk
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_latitude
+field_name: field_latitude
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
