@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains drupalsk_migrate.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function drupalsk_migrate_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the drupalsk_migrate module.
+    case 'help.page.drupalsk_migrate':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Drupal.sk community site migration scripts') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function drupalsk_migrate_theme() {
+  $theme = [];
+
+  return $theme;
+}
