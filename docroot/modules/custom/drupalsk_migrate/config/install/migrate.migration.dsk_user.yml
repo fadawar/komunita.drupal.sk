@@ -25,25 +25,20 @@ process:
     source: timezone
   init: init
   roles:
-    plugin: migration
-    migration: d6_user_role
+    plugin: iterator
     source: roles
-  user_picture:
-    plugin: migration
-    migration: d6_user_picture_file
-    source: uid
-  field_dcz_name: dcz_name
-  field_dcz_surname: dcz_surname
-  field_dcz_pos_lat: dcz_lat
-  field_dcz_pos_long: dcz_long
-  'field_dcz_bio/value': dcz_bio_value
-  'field_dcz_bio/format':
-    plugin: static_map
-    bypass: true
-    source: dcz_bio_format
-    map:
-      1: filtered_html
-      2: plain_text
-      3: full_html
-      4: messaging_plain_text
-      5: comments
+    process:
+      plugin: static_map
+      default_value: authenticated
+      map:
+        1: anonymous
+        2: authenticated
+        3: administrator
+        5: administrator
+  field_name: dsk_name
+  field_surname: dsk_surname
+  field_twitter: dsk_twitter
+  field_web: dsk_web
+  field_work: dsk_job
+  field_latitude: dsk_lat
+  field_longitude: dsk_long

@@ -26,11 +26,11 @@ class User extends OriginalUser {
     $fields = $this->baseFields();
     $fields['dsk_name'] = $this->t('Name');
     $fields['dsk_surname'] = $this->t('Surname');
+    $fields['dsk_web'] = $this->t('Web');
     $fields['dsk_job'] = $this->t('Job');
     $fields['dsk_twitter'] = $this->t('Twitter account');
-    $fields['dsk_web'] = $this->t('Web');
-    $fields['dcz_lat'] = $this->t('Latitude');
-    $fields['dcz_long'] = $this->t('Longitude');
+    $fields['dsk_lat'] = $this->t('Latitude');
+    $fields['dsk_long'] = $this->t('Longitude');
 
     // Add roles field.
     $fields['roles'] = $this->t('Roles');
@@ -64,8 +64,50 @@ class User extends OriginalUser {
     ', array(':uid' => $uid));
     foreach ($result as $record) {
       $names = explode(' ', $record->value, 2);
-      $row->setSourceProperty('dcz_name', $names[0]);
-      $row->setSourceProperty('dcz_surname', $names[1]);
+      $row->setSourceProperty('dsk_name', $names[0]);
+      $row->setSourceProperty('dsk_surname', $names[1]);
+    }
+
+    // Web.
+    $result = $this->getDatabase()->query('
+      SELECT
+        prf.value
+      FROM
+        {profile_values} prf
+      WHERE
+        prf.uid = :uid
+        AND prf.fid=2
+    ', array(':uid' => $uid));
+    foreach ($result as $record) {
+      $row->setSourceProperty('dsk_web', $record->value);
+    }
+
+    // Job.
+    $result = $this->getDatabase()->query('
+      SELECT
+        prf.value
+      FROM
+        {profile_values} prf
+      WHERE
+        prf.uid = :uid
+        AND prf.fid=5
+    ', array(':uid' => $uid));
+    foreach ($result as $record) {
+      $row->setSourceProperty('dsk_job', $record->value);
+    }
+
+    // Twitter.
+    $result = $this->getDatabase()->query('
+      SELECT
+        prf.value
+      FROM
+        {profile_values} prf
+      WHERE
+        prf.uid = :uid
+        AND prf.fid=13
+    ', array(':uid' => $uid));
+    foreach ($result as $record) {
+      $row->setSourceProperty('field_twitter', $record->value);
     }
 
     // Latitude & longitude.
@@ -80,14 +122,9 @@ class User extends OriginalUser {
         lic.uid = :uid
     ', array(':uid' => $uid));
     foreach ($result as $record) {
-      $row->setSourceProperty('dcz_lat', $record->latitude);
-      $row->setSourceProperty('dcz_long', $record->longitude);
+      $row->setSourceProperty('dsk_lat', $record->latitude);
+      $row->setSourceProperty('dsk_long', $record->longitude);
     }
-
-    // Bio.
-    $info = unserialize($row->getSourceProperty('data'));
-    $row->setSourceProperty('dcz_bio_value', $info['info']);
-    $row->setSourceProperty('dcz_bio_format', 1);
 
     return parent::prepareRow($row);
   }
