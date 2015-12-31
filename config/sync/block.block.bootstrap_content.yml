@@ -1,0 +1,20 @@
+uuid: 0ed64de2-e2b4-4b51-ae00-bf6d844199e2
+langcode: sk
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bootstrap
+id: bootstrap_content
+theme: bootstrap
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Obsah hlavnej stránky'
+  provider: system
+  label_display: '0'
+visibility: {  }

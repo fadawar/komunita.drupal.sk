@@ -1,0 +1,11 @@
+uuid: 5a60b595-8103-4312-8f01-1b17bb2be77d
+langcode: sk
+status: true
+dependencies:
+  module:
+    - user
+id: user_block_user_action
+label: 'Zablokovať vybraných používateľov'
+type: user
+plugin: user_block_user_action
+configuration: {  }

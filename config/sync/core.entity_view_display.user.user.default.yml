@@ -1,0 +1,56 @@
+uuid: 0978ec7e-6d8f-4466-9300-c72359c78b2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_d_o_username
+    - field.field.user.user.field_github
+    - field.field.user.user.field_latitude
+    - field.field.user.user.field_longitude
+    - field.field.user.user.field_name
+    - field.field.user.user.field_surname
+    - field.field.user.user.field_twitter
+    - field.field.user.user.field_web
+    - field.field.user.user.field_work
+  module:
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  field_name:
+    weight: 0
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_surname:
+    type: string
+    weight: 1
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_web:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_work:
+    type: string
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_d_o_username: true
+  field_github: true
+  field_latitude: true
+  field_longitude: true
+  field_twitter: true
+  member_for: true

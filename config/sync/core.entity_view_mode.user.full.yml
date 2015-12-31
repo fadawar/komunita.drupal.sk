@@ -1,0 +1,10 @@
+uuid: 893f931d-e5b2-4920-a300-0b0d87dbfe72
+langcode: sk
+status: false
+dependencies:
+  module:
+    - user
+id: user.full
+label: 'Používateľský účet'
+targetEntityType: user
+cache: true

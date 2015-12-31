@@ -1,0 +1,22 @@
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: false
+  node_user_picture: true
+  logo: true
+  name: true
+  slogan: true
+schema: '8000'
+cdn_provider_import_data: ''
+logo:
+  path: ''
+  url: 'http://komunita.dd:8083/themes/contrib/bootstrap/logo.svg'
+  use_default: true
+cdn_jsdelivr_version: 3.3.5
+breadcrumb: '0'
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: ''
+  use_default: true
+langcode: sk

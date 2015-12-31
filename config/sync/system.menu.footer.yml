@@ -1,0 +1,8 @@
+uuid: f5366535-870e-46b5-bd00-a7c39899c107
+langcode: sk
+status: true
+dependencies: {  }
+id: footer
+label: Päta
+description: 'Site information links'
+locked: true

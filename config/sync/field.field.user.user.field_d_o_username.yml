@@ -1,0 +1,20 @@
+uuid: 22d69a26-c039-44f5-bc05-5c997a43ba99
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_d_o_username
+  module:
+    - user
+id: user.user.field_d_o_username
+field_name: field_d_o_username
+entity_type: user
+bundle: user
+label: 'Drupal.org používateľské meno'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

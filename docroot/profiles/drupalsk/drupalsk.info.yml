@@ -1,0 +1,41 @@
+name: Drupal.sk
+type: profile
+description: 'Drupal.sk community website.'
+version: 8.x-1.0
+core: 8.x
+dependencies:
+  - node
+  - history
+  - block
+  - block_content
+  - breakpoint
+  - ckeditor
+  - config
+  - contextual
+  - contact
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - taxonomy
+  - dblog
+  - search
+  - toolbar
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - automated_cron
+themes:
+  - bartik
+  - seven
+distribution: true

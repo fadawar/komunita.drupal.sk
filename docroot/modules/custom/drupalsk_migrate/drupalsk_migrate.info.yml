@@ -1,0 +1,9 @@
+name: Drupal.sk migrate
+type: module
+description: Drupal.sk community site migration scripts
+core: 8.x
+package: Other
+dependencies:
+  - migrate
+  - migrate_drupal
+  - user

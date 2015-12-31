@@ -1,0 +1,11 @@
+uuid: 6e2c3922-1ef3-4857-9500-0dc5fb1b7115
+langcode: sk
+status: true
+dependencies:
+  module:
+    - node
+id: node_make_sticky_action
+label: 'Prilepiť obsah'
+type: node
+plugin: node_make_sticky_action
+configuration: {  }

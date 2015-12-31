@@ -1,0 +1,20 @@
+uuid: 81e1d131-029f-4770-8832-5000b8d44940
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_work
+  module:
+    - user
+id: user.user.field_work
+field_name: field_work
+entity_type: user
+bundle: user
+label: Zamestnanie
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

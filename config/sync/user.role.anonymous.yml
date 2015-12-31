@@ -1,0 +1,10 @@
+uuid: 5fba59c4-8244-457a-b648-7250c5950c6f
+langcode: sk
+status: true
+dependencies: {  }
+id: anonymous
+label: 'Anonymný používateľ'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'

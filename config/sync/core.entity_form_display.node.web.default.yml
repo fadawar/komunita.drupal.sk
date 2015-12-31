@@ -1,0 +1,78 @@
+uuid: 3619b738-e5fa-4246-b003-3cb15899f361
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.web.body
+    - field.field.node.web.field_obrazok
+    - field.field.node.web.field_odkaz_na_projekt
+    - node.type.web
+  module:
+    - image
+    - link
+    - text
+id: node.web.default
+targetEntityType: node
+bundle: web
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_obrazok:
+    weight: 27
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+  field_odkaz_na_projekt:
+    weight: 28
+    settings:
+      placeholder_url: ''
+      placeholder_title: 'Odkaz na projekt'
+    third_party_settings: {  }
+    type: link_default
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

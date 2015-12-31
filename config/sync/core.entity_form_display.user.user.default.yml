@@ -1,0 +1,64 @@
+uuid: caa4b13c-3637-4c44-8307-07793a84a2c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_d_o_username
+    - field.field.user.user.field_github
+    - field.field.user.user.field_latitude
+    - field.field.user.user.field_longitude
+    - field.field.user.user.field_name
+    - field.field.user.user.field_surname
+    - field.field.user.user.field_twitter
+    - field.field.user.user.field_web
+    - field.field.user.user.field_work
+  module:
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  field_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_surname:
+    type: string_textfield
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_web:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  field_work:
+    type: string_textfield
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  timezone:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_d_o_username: true
+  field_github: true
+  field_latitude: true
+  field_longitude: true
+  field_twitter: true
+  language: true

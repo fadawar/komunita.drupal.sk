@@ -1,0 +1,18 @@
+uuid: fc2a1e5e-fd14-41e7-b62d-45bbae3f50d9
+langcode: sk
+status: true
+dependencies:
+  theme:
+    - bootstrap
+id: bootstrap_page_title
+theme: bootstrap
+region: header
+weight: -1
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Názov stránky'
+  provider: core
+  label_display: '0'
+visibility: {  }

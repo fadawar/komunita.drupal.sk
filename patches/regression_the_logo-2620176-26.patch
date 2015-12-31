@@ -1,0 +1,98 @@
+diff --git a/core/lib/Drupal/Core/Extension/ThemeHandler.php b/core/lib/Drupal/Core/Extension/ThemeHandler.php
+index c3d8684..59cfd99 100644
+--- a/core/lib/Drupal/Core/Extension/ThemeHandler.php
++++ b/core/lib/Drupal/Core/Extension/ThemeHandler.php
+@@ -19,9 +19,12 @@ class ThemeHandler implements ThemeHandlerInterface {
+    * Contains the features enabled for themes by default.
+    *
+    * @var array
++   *
++   * @see _system_default_theme_features()
+    */
+   protected $defaultFeatures = array(
+     'favicon',
++    'logo',
+     'node_user_picture',
+     'comment_user_picture',
+     'comment_user_verification',
+diff --git a/core/modules/system/src/Form/ThemeSettingsForm.php b/core/modules/system/src/Form/ThemeSettingsForm.php
+index 7f02517..54f37f8 100644
+--- a/core/modules/system/src/Form/ThemeSettingsForm.php
++++ b/core/modules/system/src/Form/ThemeSettingsForm.php
+@@ -183,12 +183,6 @@ public function buildForm(array $form, FormStateInterface $form_state, $theme =
+         '#type' => 'details',
+         '#title' => t('Logo image settings'),
+         '#open' => TRUE,
+-        '#states' => array(
+-          // Hide the logo image settings fieldset when logo display is disabled.
+-          'invisible' => array(
+-            'input[name="toggle_logo"]' => array('checked' => FALSE),
+-          ),
+-        ),
+       );
+       $form['logo']['default_logo'] = array(
+         '#type' => 'checkbox',
+@@ -430,7 +424,6 @@ public function submitForm(array &$form, FormStateInterface $form_state) {
+       $filename = file_unmanaged_copy($values['logo_upload']->getFileUri());
+       $values['default_logo'] = 0;
+       $values['logo_path'] = $filename;
+-      $values['toggle_logo'] = 1;
+     }
+     if (!empty($values['favicon_upload'])) {
+       $filename = file_unmanaged_copy($values['favicon_upload']->getFileUri());
+diff --git a/core/modules/system/src/Tests/System/ThemeTest.php b/core/modules/system/src/Tests/System/ThemeTest.php
+index 278353d..130193d 100644
+--- a/core/modules/system/src/Tests/System/ThemeTest.php
++++ b/core/modules/system/src/Tests/System/ThemeTest.php
+@@ -189,10 +189,6 @@ function testThemeSettings() {
+     $this->assertEqual($elements[0]['src'], file_create_url($uploaded_filename));
+ 
+     $this->container->get('theme_handler')->install(array('bartik'));
+-    $this->drupalGet('admin/appearance/settings/bartik');
+-    // The logo field should only be present on the global theme settings form.
+-    $this->assertNoFieldByName('logo_path');
+-    $this->drupalPostForm(NULL, [], t('Save configuration'));
+ 
+     // Ensure only valid themes are listed in the local tasks.
+     $this->drupalPlaceBlock('local_tasks_block', ['region' => 'header']);
+@@ -213,6 +209,22 @@ function testThemeSettings() {
+   }
+ 
+   /**
++   * Test the theme settings logo form.
++   */
++  function testThemeSettingsLogo() {
++    // Visit Bartik's theme settings page to replace the logo.
++    $this->container->get('theme_handler')->install(['bartik']);
++    $this->drupalGet('admin/appearance/settings/bartik');
++    $edit = [
++      'default_logo' => FALSE,
++      'logo_path' => 'core/misc/druplicon.png',
++    ];
++    $this->drupalPostForm('admin/appearance/settings/bartik', $edit, t('Save configuration'));
++    $this->assertFieldByName('default_logo', FALSE);
++    $this->assertFieldByName('logo_path', 'core/misc/druplicon.png');
++  }
++
++  /**
+    * Test the administration theme functionality.
+    */
+   function testAdministrationTheme() {
+diff --git a/core/modules/system/system.module b/core/modules/system/system.module
+index 8770abc..ae6142f 100644
+--- a/core/modules/system/system.module
++++ b/core/modules/system/system.module
+@@ -1062,10 +1062,13 @@ function system_rebuild_module_data() {
+ 
+ /**
+  * Returns an array of default theme features.
++ *
++ * @see \Drupal\Core\Extension\ThemeHandler::$defaultFeatures
+  */
+ function _system_default_theme_features() {
+   return array(
+     'favicon',
++    'logo',
+     'node_user_picture',
+     'comment_user_picture',
+     'comment_user_verification',

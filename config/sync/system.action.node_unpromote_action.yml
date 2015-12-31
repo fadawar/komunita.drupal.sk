@@ -1,0 +1,11 @@
+uuid: df0a1954-d186-473f-a100-bf3bc2aaa1cf
+langcode: sk
+status: true
+dependencies:
+  module:
+    - node
+id: node_unpromote_action
+label: 'Odstrániť obsah z hlavnej stránky'
+type: node
+plugin: node_unpromote_action
+configuration: {  }

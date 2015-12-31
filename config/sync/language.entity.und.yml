@@ -1,0 +1,9 @@
+uuid: dca2cccb-41f8-4d40-a300-ceeb1fece4a7
+langcode: sk
+status: true
+dependencies: {  }
+id: und
+label: Neurčené
+direction: ltr
+weight: 2
+locked: true

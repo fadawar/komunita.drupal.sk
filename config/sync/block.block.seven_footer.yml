@@ -1,0 +1,24 @@
+uuid: 4b3b0e24-ca5b-4328-a400-c66ddf02c3dc
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - seven
+id: seven_footer
+theme: seven
+region: '-1'
+weight: 0
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: 'Footer menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }

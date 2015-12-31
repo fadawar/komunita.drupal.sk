@@ -1,0 +1,10 @@
+uuid: e59e2388-ea6f-455b-8d1c-2868d4e6500d
+langcode: sk
+status: false
+dependencies:
+  module:
+    - block_content
+id: block_content.full
+label: Plný
+targetEntityType: block_content
+cache: true
