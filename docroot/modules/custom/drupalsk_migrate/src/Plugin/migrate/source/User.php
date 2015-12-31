@@ -44,14 +44,6 @@ class User extends OriginalUser {
   public function prepareRow(Row $row) {
     $uid = $row->getSourceProperty('uid');
 
-    // User roles.
-    $roles = $this->select('users_roles', 'ur')
-      ->fields('ur', array('rid'))
-      ->condition('ur.uid', $row->getSourceProperty('uid'))
-      ->execute()
-      ->fetchCol();
-    $row->setSourceProperty('roles', $roles);
-
     // Name & surname.
     $result = $this->getDatabase()->query('
       SELECT

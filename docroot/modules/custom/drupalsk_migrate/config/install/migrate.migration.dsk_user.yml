@@ -24,17 +24,6 @@ process:
     plugin: user_update_7002
     source: timezone
   init: init
-  roles:
-    plugin: iterator
-    source: roles
-    process:
-      plugin: static_map
-      default_value: authenticated
-      map:
-        1: anonymous
-        2: authenticated
-        3: administrator
-        5: administrator
   field_name: dsk_name
   field_surname: dsk_surname
   field_twitter: dsk_twitter
