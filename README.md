@@ -1,5 +1,21 @@
 # Drupal.sk community site
 
+## Priorities for Spring 2016 sprint
+* [ ] #2 - update core
+* Blogs
+ - [ ] #5 - create content type
+ - [ ] #11 - display blogs
+ - [ ] #12 - theme blogs
+ - [ ] #10 - migrate content from old site
+* Forum
+ - [ ] #3 - enable module
+ - [ ] #6 - create forum blocks
+ - [ ] #7 - theme forum
+ - [ ] #4 - migrate old content
+* Other
+ - [ ] #9 - theme showcases
+ - [ ] #8 - enhacements in showcases
+
 ## Contents
 * config/ - Exported configuration.
 * docroot/ - Website directory.
