@@ -1,0 +1,24 @@
+uuid: 05d204e6-161e-42ba-a506-6a6ac1429322
+langcode: sk
+status: true
+dependencies:
+  config:
+    - views.view.blogs
+  module:
+    - views
+  theme:
+    - bootstrap
+id: views_block__blogs_block_1
+theme: bootstrap
+region: content
+weight: -7
+provider: null
+plugin: 'views_block:blogs-block_1'
+settings:
+  id: 'views_block:blogs-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }
