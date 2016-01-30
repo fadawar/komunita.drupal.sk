@@ -1,0 +1,34 @@
+uuid: db730809-a132-4b1c-be35-537bb5b952ad
+langcode: sk
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.forums
+  module:
+    - text
+_core:
+  default_config_hash: LpoS0m7hObCDoy1RJFl2hWc9zc0dFobBptKzw2ua3MU
+id: taxonomy_term.forums.default
+targetEntityType: taxonomy_term
+bundle: forums
+mode: default
+content:
+  description:
+    type: text_textfield
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  forum_container: true
