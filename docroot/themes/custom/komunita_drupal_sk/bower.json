@@ -1,0 +1,25 @@
+{
+  "name": "komunita_drupal_sk",
+  "description": "Website for komunita.drupal.sk",
+  "main": "index.js",
+  "authors": [
+    "fadawar"
+  ],
+  "license": "GPL-3.0",
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  },
+  "overrides": {
+  }
+}
