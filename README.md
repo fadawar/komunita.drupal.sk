@@ -10,13 +10,13 @@
  - [ ] #12 - theme blogs
  - [ ] #10 - migrate content from old site
 * Forum
- - [ ] #3 - enable module
+ - [x] #3 - enable module
  - [ ] #6 - create forum blocks
  - [ ] #7 - theme forum
  - [ ] #4 - migrate old content
 * Other
  - [ ] #9 - theme showcases
- - [ ] #8 - enhacements in showcases
+ - [x] #8 - enhacements in showcases
 
 ## Contents
 * config/ - Exported configuration.
