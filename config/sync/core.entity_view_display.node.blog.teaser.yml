@@ -1,0 +1,27 @@
+uuid: 72ec87ca-24fe-4a4f-a700-b389e760ebaa
+langcode: sk
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.blog.body
+    - node.type.blog
+  module:
+    - text
+    - user
+id: node.blog.teaser
+targetEntityType: node
+bundle: blog
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden:
+  langcode: true
