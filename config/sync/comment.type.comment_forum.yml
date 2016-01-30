@@ -1,0 +1,10 @@
+uuid: 723404de-3e1c-4c9d-be02-2e1d70979fe4
+langcode: sk
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: TX1Yw0zVt4JRHcN0rub8UfkGHFSm99ohQkH32Q9ib9E
+id: comment_forum
+label: Comment_forum
+target_entity_type_id: node
+description: 'Default comment field'
