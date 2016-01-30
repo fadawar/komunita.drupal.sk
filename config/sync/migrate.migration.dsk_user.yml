@@ -1,17 +1,17 @@
-id: dsk_user
-label: Custom user migration from Drupal 6
+uuid: 8a41e240-eac1-4979-b900-f14fd0a29f75
+langcode: en
+status: true
 dependencies:
   enforced:
     module:
       - migrate
       - drupalsk_migrate
+id: dsk_user
 migration_tags:
   - 'Drupal 6'
+label: 'Custom user migration from Drupal 6'
 source:
   plugin: dsk_user
-destination:
-  plugin: entity:user
-  md5_passwords: true
 process:
   uid: uid
   name: name
@@ -32,3 +32,8 @@ process:
   field_work: dsk_job
   field_latitude: dsk_lat
   field_longitude: dsk_long
+destination:
+  plugin: 'entity:user'
+  md5_passwords: true
+template: null
+migration_dependencies: {  }
