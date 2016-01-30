@@ -6,7 +6,7 @@
 * [x] #2 - update core
 * Blogs
  - [x] #5 - create content type
- - [ ] #11 - display blogs
+ - [x] #11 - display blogs
  - [ ] #12 - theme blogs
  - [ ] #10 - migrate content from old site
 * Forum
