@@ -2,7 +2,7 @@ uuid: 1eb36fc6-3120-466c-8d54-84a6b300d6f2
 langcode: sk
 status: true
 dependencies: {  }
-name: cover_image_
+name: cover_image
 label: 'Cover image display (287x194)'
 effects:
   22c4b274-8437-405e-9b00-b18d1b3c45b2:
