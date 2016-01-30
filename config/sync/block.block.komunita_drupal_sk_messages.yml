@@ -1,0 +1,20 @@
+uuid: 6d8b43fa-e232-48d1-8206-6f1f1cb1446e
+langcode: sk
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_messages
+theme: komunita_drupal_sk
+region: header
+weight: -3
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

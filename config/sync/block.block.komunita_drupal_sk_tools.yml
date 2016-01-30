@@ -1,0 +1,24 @@
+uuid: 590041e6-eb18-4d7f-b537-55ece56f5158
+langcode: sk
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_tools
+theme: komunita_drupal_sk
+region: '-1'
+weight: -3
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Nástroje
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

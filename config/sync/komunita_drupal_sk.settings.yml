@@ -1,0 +1,18 @@
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: ''
+  use_default: true
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: false
+  node_user_picture: true
+  logo: true
+  name: true
+  slogan: true
+logo:
+  path: ''
+  url: 'http://localhost/komunita.drupal.sk/docroot/themes/contrib/bootstrap/logo.svg'
+  use_default: true
+schema: 8000

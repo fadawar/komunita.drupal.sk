@@ -1,0 +1,20 @@
+uuid: 56eb1d4f-0e2f-4f7c-a507-7a84f6e52da6
+langcode: sk
+status: true
+dependencies:
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_local_tasks
+theme: komunita_drupal_sk
+region: header
+weight: -2
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Záložky
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

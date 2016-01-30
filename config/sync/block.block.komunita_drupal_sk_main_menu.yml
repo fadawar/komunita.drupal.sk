@@ -1,0 +1,24 @@
+uuid: 9333814f-6dfb-489e-b334-524fd579c44c
+langcode: sk
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_main_menu
+theme: komunita_drupal_sk
+region: navigation_collapsible
+weight: -6
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 2
+visibility: {  }

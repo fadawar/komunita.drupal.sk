@@ -1,0 +1,18 @@
+uuid: 6dc2e288-1bb7-429a-a500-e7746fb80724
+langcode: sk
+status: true
+dependencies:
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_page_title
+theme: komunita_drupal_sk
+region: header
+weight: -1
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Názov stránky'
+  provider: core
+  label_display: '0'
+visibility: {  }

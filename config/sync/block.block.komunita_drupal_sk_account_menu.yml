@@ -1,0 +1,24 @@
+uuid: f7d3798e-88f1-4a25-8422-34f544cb2351
+langcode: sk
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_account_menu
+theme: komunita_drupal_sk
+region: navigation_collapsible
+weight: -6
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 2
+visibility: {  }

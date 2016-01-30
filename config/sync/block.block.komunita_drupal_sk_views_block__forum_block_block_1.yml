@@ -1,0 +1,24 @@
+uuid: 9cec553b-af76-473e-b400-b21491a121b5
+langcode: sk
+status: true
+dependencies:
+  config:
+    - views.view.forum_block
+  module:
+    - views
+  theme:
+    - komunita_drupal_sk
+id: komunita_drupal_sk_views_block__forum_block_block_1
+theme: komunita_drupal_sk
+region: content
+weight: -5
+provider: null
+plugin: 'views_block:forum_block-block_1'
+settings:
+  id: 'views_block:forum_block-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }
