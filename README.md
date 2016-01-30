@@ -16,7 +16,7 @@
  - [ ] #4 - migrate old content
 * Other
  - [ ] #9 - theme showcases
- - [ ] #8 - enhacements in showcases
+ - [x] #8 - enhacements in showcases
 
 ## Contents
 * config/ - Exported configuration.

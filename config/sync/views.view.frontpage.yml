@@ -52,26 +52,17 @@ display:
           entity_type: node
           entity_field: status
       pager:
-        type: full
+        type: some
         options:
-          items_per_page: 12
+          items_per_page: 3
           offset: 0
-          id: 0
-          total_pages: 0
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- Všetko -'
+            offset_label: 'Zobraziť od'
           tags:
             previous: '‹ Previous'
-            next: 'Next ›'
             first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- Všetko -'
-            offset: false
-            offset_label: 'Zobraziť od'
-          quantity: 9
       query:
         type: views_query
         options:
@@ -404,7 +395,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       max-age: -1
@@ -416,9 +406,61 @@ display:
     display_options:
       path: node
       display_extenders: {  }
+      use_more: true
+      defaults:
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+      use_more_always: true
+      use_more_text: 'Zobraziť ďalšie'
     display_plugin: page
     display_title: Page
     id: page_1
+    position: 1
+    cache_metadata:
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      max-age: -1
+      tags:
+        - 'config:field.storage.node.field_obrazok'
+        - 'config:field.storage.user.field_name'
+        - 'config:field.storage.user.field_surname'
+  page_2:
+    display_options:
+      path: showcases
+      display_extenders: {  }
+      display_description: ''
+      pager:
+        type: full
+        options:
+          items_per_page: 12
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Predchádzajúca'
+            next: 'Nasledujúca ›'
+            first: '« Prvá'
+            last: 'Posledná »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- Všetko -'
+            offset: false
+            offset_label: 'Zobraziť od'
+          quantity: 9
+      defaults:
+        pager: false
+        title: false
+      title: Portfólia
+    display_plugin: page
+    display_title: 'Showcases Page'
+    id: page_2
     position: 1
     cache_metadata:
       contexts:
