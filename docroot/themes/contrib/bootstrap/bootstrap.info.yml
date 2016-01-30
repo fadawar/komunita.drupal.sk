@@ -37,6 +37,7 @@ libraries-extend:
     - bootstrap/drupal.tabledrag
 
 libraries-override:
+  core/drupal.batch: bootstrap/drupal.batch
   core/drupal.collapse: false
   core/drupal.dropbutton: bootstrap/dropdown
   core/drupal.vertical-tabs: bootstrap/drupal.vertical-tabs
@@ -44,13 +45,18 @@ libraries-override:
   system/admin: false
   text/drupal.text: bootstrap/drupal.text
 
-# Remove individual stylesheets. Idealy, this entire library should be removed.
+# Remove individual stylesheets.
   system/base:
     css:
       component:
         css/components/ajax-progress.module.css: false
         css/components/autocomplete-loading.module.css: false
         css/components/tabledrag.module.css: false
+
+  file/drupal.file:
+    css:
+      theme:
+        css/file.admin.css: false
 
   filter/drupal.filter.admin:
     css:
@@ -65,8 +71,8 @@ libraries-override:
 #  core/drupal.dialog: bootstrap/drupal.dialog
 #  core/drupal.dialog.ajax: bootstrap/drupal.dialog.ajax
 
-# Information added by Drupal.org packaging script on 2015-12-22
-version: '8.x-3.0-beta2+13-dev'
+# Information added by Drupal.org packaging script on 2016-01-02
+version: '8.x-3.0-beta2+19-dev'
 core: '8.x'
 project: 'bootstrap'
-datestamp: 1450793942
+datestamp: 1451777043
