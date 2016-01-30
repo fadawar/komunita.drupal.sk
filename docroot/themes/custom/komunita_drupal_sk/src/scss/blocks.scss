@@ -1,1 +1,14 @@
-body { @include font-default(); }
+body { background-color: $c-body-background; color: $c-text; @include font-default(); }
+
+h2 { margin-top: 0; font-size: 20px; font-weight: bold; }
+
+.block, .showcase { margin-bottom: 40px; background: $c-block-background;
+  h2.block-title, .view-header { color: $c-block-head-title; line-height: 60px; text-align: center; }
+}
+
+.showcase { text-align: center;
+  .view-header { font-size: 20px; font-weight: bold; }
+  .views-field {
+    &-title { font-size: 20px; font-weight: bold; }
+  }
+}
