@@ -9,7 +9,7 @@ dependencies:
 id: bootstrap_content
 theme: bootstrap
 region: content
-weight: 0
+weight: -6
 provider: null
 plugin: system_main_block
 settings:
