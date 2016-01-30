@@ -11,7 +11,7 @@
  - [ ] #10 - migrate content from old site
 * Forum
  - [x] #3 - enable module
- - [ ] #6 - create forum blocks
+ - [x] #6 - create forum blocks
  - [ ] #7 - theme forum
  - [ ] #4 - migrate old content
 * Other
