@@ -1,5 +1,7 @@
 # Drupal.sk community site
 
+[![Join the chat at https://gitter.im/slovak-drupal-association/komunita.drupal.sk](https://badges.gitter.im/slovak-drupal-association/komunita.drupal.sk.svg)](https://gitter.im/slovak-drupal-association/komunita.drupal.sk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Priorities for Spring 2016 sprint
 * [x] #2 - update core
 * Blogs
