@@ -112,7 +112,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_style: cover_image_
+            image_style: cover_image
             image_link: ''
           group_column: ''
           group_columns: {  }
