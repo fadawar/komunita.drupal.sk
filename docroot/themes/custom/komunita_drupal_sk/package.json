@@ -1,18 +1,18 @@
 {
-  "name": "spinehero",
+  "name": "komunita_drupal_sk",
   "version": "1.0.0",
-  "description": "Website for spinehero.com",
+  "description": "Website for komunita.drupal.sk",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/spinehero/website.git"
+    "url": "https://github.com/slovak-drupal-association/komunita.drupal.sk.git"
   },
   "author": "fadawar",
   "license": "GPL-3.0",
-  "homepage": "https://bitbucket.org/spinehero/website#readme",
+  "homepage": "https://github.com/slovak-drupal-association/komunita.drupal.sk",
   "devDependencies": {
     "bower": "^1.7.2",
     "browser-sync": "^2.11.0",
