@@ -3,7 +3,7 @@
 ## Priorities for Spring 2016 sprint
 * [x] #2 - update core
 * Blogs
- - [ ] #5 - create content type
+ - [x] #5 - create content type
  - [ ] #11 - display blogs
  - [ ] #12 - theme blogs
  - [ ] #10 - migrate content from old site

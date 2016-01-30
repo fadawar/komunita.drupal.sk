@@ -1,0 +1,9 @@
+uuid: 910a4539-a80e-428d-a000-f7aa53385760
+langcode: sk
+status: true
+dependencies: {  }
+name: Tags
+vid: tags
+description: ''
+hierarchy: 0
+weight: 0
