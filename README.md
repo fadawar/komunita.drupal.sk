@@ -1,7 +1,7 @@
 # Drupal.sk community site
 
 ## Priorities for Spring 2016 sprint
-* [ ] #2 - update core
+* [x] #2 - update core
 * Blogs
  - [ ] #5 - create content type
  - [ ] #11 - display blogs
@@ -32,8 +32,8 @@
   * `git clone git@github.com:[YOUR-NAME]/komunita.drupal.sk.git komunita.drupal.sk`
   * `cd komunita.drupal.sk`
 * Prepare your database and fill the credentials into your new local config.
-  * `cp docroot/settings/default.settings.local.php docroot/settings/settings.local.php`
-  * edit this config: `docroot/settings/settings.local.php`
+  * `cp docroot/sites/default.settings.local.php docroot/sites/settings.local.php`
+  * edit this config: `docroot/sites/settings.local.php`
   * you need set `$settings['hash_salt']` to some random string value. This value is used for hashing passwords on your site.
   * (optional) set DB connection string. Some stacks might generate this for you. Look for `$databases` non-empty array. 
 * Install the site using Drupal.sk profile (distribution).
